@@ -1,0 +1,4 @@
+# Allow all user agents to crawl the entire site.
+User-agent: *
+Allow: /
+Sitemap: https://sunoprompt.tools/sitemap.xml 
