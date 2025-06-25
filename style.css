@@ -58,6 +58,7 @@ main {
     padding: 2rem;
     max-width: 1400px;
     margin: 0 auto;
+    flex: 1;
 }
 
 footer {
@@ -82,12 +83,9 @@ footer {
 }
 
 .categories {
-    flex: 3;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1rem;
-    align-items: flex-start;
 }
 
 /* --- 组件 --- */
@@ -158,8 +156,8 @@ button:active {
     box-shadow: var(--md-shadow);
     transition: box-shadow 0.3s;
     overflow: hidden;
-    flex: 1;
-    min-width: 200px;
+    display: flex;
+    flex-direction: column;
 }
 .category-accordion:hover {
     box-shadow: var(--md-shadow-hover);
