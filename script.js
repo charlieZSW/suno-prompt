@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. 【重构】设置 Accordion 交互，使用固定大高度代替 scrollHeight
+    // 8. 【重构】设置 Accordion 交互，允许多个同时展开
     function setupAccordions() {
         const headers = categoriesContainer.querySelectorAll('.accordion-header');
         
@@ -319,23 +319,19 @@ document.addEventListener('DOMContentLoaded', () => {
             clickedHeader.addEventListener('click', () => {
                 const accordion = clickedHeader.parentElement;
                 const panel = clickedHeader.nextElementSibling;
-                const wasActive = accordion.classList.contains('active');
+                const icon = clickedHeader.querySelector('.accordion-icon');
 
-                // 关闭所有
-                categoriesContainer.querySelectorAll('.category-accordion').forEach(acc => {
-                    acc.classList.remove('active');
-                    acc.querySelector('.accordion-panel').style.maxHeight = null;
-                    const icon = acc.querySelector('.accordion-icon');
-                    if (icon) icon.textContent = '+';
-                });
+                // 直接切换当前点击的 accordion 的状态
+                accordion.classList.toggle('active');
 
-                // 如果点击的不是已激活的，则展开它
-                if (!wasActive) {
-                    accordion.classList.add('active');
-                    // 【修复】使用 scrollHeight 代替固定值，解决父级收起延迟问题
+                if (accordion.classList.contains('active')) {
+                    // 如果是展开状态，设置高度并改变图标
                     panel.style.maxHeight = panel.scrollHeight + "px"; 
-                    const icon = clickedHeader.querySelector('.accordion-icon');
                     if (icon) icon.textContent = '−';
+                } else {
+                    // 如果是折叠状态，清空高度并改变图标
+                    panel.style.maxHeight = null;
+                    if (icon) icon.textContent = '+';
                 }
             });
         });
