@@ -30,12 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: 'Wind Instruments', subOptions: ['Flute', 'Saxophone'] },
             { name: 'Percussion', subOptions: ['Drums'] }
         ],
+        'PITCH / OCTAVE': [
+            'High Pitch',
+            'Mid Pitch',
+            'Low Pitch',
+            'Very Low Pitch'
+        ],
         'MELODY TYPE': [
-            'Catchy Melody',
-            'Lyrical Melody',
-            'Simple Melody',
-            'Soaring Melody',
-            'Haunting Melody',
+            { name: 'Melody Contour', subOptions: ['Soaring Melody', 'Descending Melody', 'Leaping Melody', 'Stepwise Melody'] },
+            { name: 'Melody Feel', subOptions: ['Catchy Melody', 'Lyrical Melody', 'Haunting Melody', 'Playful Melody'] },
+            { name: 'Melody Density', subOptions: ['Simple Melody', 'Complex Melody', 'Ornamented Melody'] },
             'Melody-driven'
         ],
         'KEYWORDS': [
